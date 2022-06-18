@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="./node_modules/materialize-css/dist/css/materialize.css">
-    <title>Hello World!</title>
+    <title>Dynamite Index Toolbox</title>
   </head>
   <body background="./UI1_BG0_2x.png">
     <div class="row">
@@ -14,19 +14,22 @@
         </div>
         <div class="input-field col s4">
             <input placeholder="路径" id="path" type="text">
-          </div>
-          <div class="input-field col s4">
+        </div>
+        <div class="input-field col s3">
             <a class="waves-effect waves-light btn red">读取</a>
-          </div>
+        </div>
+        <div class="col s1">
+            <a class="waves-effect waves-light btn yellow" id="min">隐藏</a>
+        </div>
         <div class="col s1">
             <a class="waves-effect waves-light btn red" id="exit">关闭</a>
         </div>
       </div>
     <div class="row">
         <div class="collection">
-            <a class="collection-item active">-</a>
+            <a class="collection-item active blue">-</a>
         </div>
     </div>
-    <script src="./renderer.js"></script>
+    <script src="./frame_btn.js"></script>
   </body>
 </html>

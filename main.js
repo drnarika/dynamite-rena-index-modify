@@ -1,9 +1,8 @@
 /*
  * @Author: Narika
  */
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, ipcMain, Tray, Menu} = require('electron')
 const path = require('path')
-
 
 function createWindow() {
     const winw = new BrowserWindow({
@@ -15,17 +14,39 @@ function createWindow() {
         width: 1000,
         height: 562
     })
+    winw.loadFile('./index.html')
+    return winw
+}
 
+function ipcListening(win){
     ipcMain.on('exit',()=>{
         app.quit()
-    }
-    )
-    winw.loadFile('./index.html')
+    })
+    ipcMain.on('min2tray',()=>{
+        win.hide()
+
+        const appTray = new Tray(path.join(__dirname, './app_icon.png'))
+        const trayMenuTemplate = [
+            {
+                label: '退出',
+                click: () => {
+                    app.quit();
+                }
+            }
+        ]
+        appTray.setToolTip('Dynamite Index Toolbox');
+        appTray.setContextMenu(Menu.buildFromTemplate(trayMenuTemplate))
+        appTray.on('click', () => {
+            win.show();
+            appTray.destroy()
+        });
+    })
 }
 
 app.whenReady().then(()=>{
-    createWindow()
-  
+    const win = createWindow()
+    ipcListening(win)
+
     app.on('activate', function () {
       if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
