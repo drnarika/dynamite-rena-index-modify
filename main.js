@@ -7,7 +7,7 @@ const path = require('path')
 function createWindow() {
     const winw = new BrowserWindow({
         webPreferences:{
-            preload: path.join(__dirname,'preload.js'),
+            preload: path.join(__dirname,'js/preload.js'),
         },
         frame: false,
         resizable: false,
@@ -22,10 +22,11 @@ function ipcListening(win){
     ipcMain.on('exit',()=>{
         app.quit()
     })
+    
     ipcMain.on('min2tray',()=>{
         win.hide()
 
-        const appTray = new Tray(path.join(__dirname, './app_icon.png'))
+        const appTray = new Tray(path.join(__dirname, './pic/app_icon.png'))
         const trayMenuTemplate = [
             {
                 label: '退出',

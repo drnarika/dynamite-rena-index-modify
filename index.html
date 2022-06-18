@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="./node_modules/materialize-css/dist/css/materialize.css">
     <title>Dynamite Index Toolbox</title>
   </head>
-  <body background="./UI1_BG0_2x.png">
+  <body background="./pic//UI1_BG0_2x.png">
+<div style="margin-top: 2px;"
     <div class="row">
         <div class="col s3">
-            <a class="waves-effect waves-light btn">选择__rena_index_2文件</a>
+            <a class="waves-effect waves-light btn" id="openDialog">选择__rena_index_2文件</a>
         </div>
         <div class="input-field col s4">
             <input placeholder="路径" id="path" type="text">
@@ -26,10 +27,12 @@
         </div>
       </div>
     <div class="row">
-        <div class="collection">
+        <div class="collection col s6">
             <a class="collection-item active blue">-</a>
         </div>
     </div>
-    <script src="./frame_btn.js"></script>
+</div>
+    <script src="./js/frame_btn.js"></script>
+    <script src="./js/file_operate.js"></script>
   </body>
 </html>
